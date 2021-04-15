@@ -1,29 +1,36 @@
 body{
     margin: auto;
+    position: absolute;
+    width: 100%;
+    background-color: black;
 }
 .date{
     text-align: center;
     font-size: 2rem;
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-    background-color: black;
     color: white;
-    padding: 2rem;
-    margin: -1rem;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
 }
 
 .image{
     width: 100%;
     height: 100%;
+    margin: auto;
 }
 
 .moredata{
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-size: 2rem;
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     background-color: black;
     color: white;
     padding: 0.5rem 0;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 5px;
+    row-gap: 5px;
 }
 
 .moredata p {
@@ -34,6 +41,52 @@ body{
     text-align: center;
     font-size: 2rem;
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-    padding: 0.5rem 1rem; 
+    padding: 0.5rem 3rem; 
+    background-color: rgb(161, 172, 196);
+    border: none;
+}
+
+.more_btn:hover{
+    background-color: black;
+    color: rgb(161, 172, 196)
+}
+
+.more-data-position{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.settings-position{
+    position: fixed;
+    top: 0;
+    /* background-color: black; */
+    color:rgb(161, 172, 196);
+    padding: 1rem 1.5rem;
+    font-size: 3rem;
+    width: 30%;
+}
+
+.settings-selection{
+    margin-top: 20%;
     
+}
+.settings-style h6{
+    margin: 3%;
+}
+.settings-btn{
+    padding: 0.5rem;
+}
+.inside-btn{
+    text-align: left;
+    font-size: 2rem;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    padding: 0; 
+    background-color: black;
+    color:rgb(161, 172, 196);
+    border: none;
+}
+
+h6 {
+    font-size: 1.5rem;
 }

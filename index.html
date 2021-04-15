@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c0c702a26c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-
-    <div id="date_time" class="date"></div>
+    
+    <div class="settings-position" id="settingsPosition">
+        <button type="submit" id="settings" class="inside-btn"><i class="fas fa-cog"></i></button>
+        <div id="settings-container" class="settings-style"></div>
+    </div>
+    
+    <div class="date">
+        <span id="greeting"></span>
+        <div id="timeHour" class="date">
+            <span id= "hourAndMinutes"></span>
+            <span id= "seconds"></span>
+        </div>
+        <span id="date_time"></span>
+        <span id="showDate"></span>   
+    </div>
+    
     <img class="image">
     
-    <button type="submit" id="more" class="more_btn">More</button>
-
-    <div id="more_data"></div>
+    <div class="more-data-position">
+        <button type="submit" id="more" class="more_btn">More</button>
+        <div id="more_data"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
