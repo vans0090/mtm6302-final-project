@@ -1,3 +1,5 @@
+
+// targetting all the HTML elements into variables
 const $greeting = document.getElementById('greeting')
 const $dateTime = document.getElementById('date_time')
 const $showDate = document.getElementById('showDate')
@@ -10,14 +12,18 @@ const $settings = document.getElementById('settings')
 const $settingsContainer = document.getElementById('settings-container')
 const $settingsPosition = document.getElementById('settingsPosition')
 
-const date = new Date()
-const h = date.getHours();
-
-
+// declaring global variables 
 let imageData
 let weekday
 let monthOfTheYear
 
+// getting current date
+const date = new Date()
+
+// getting the hour to use in greetings
+const h = date.getHours();
+
+// function to display greeting acc to the time
 function greeting() {
     if (h < 11) {
         $greeting.innerHTML = `<h2>Good Morning, currently the time is</h2>`
@@ -29,12 +35,11 @@ function greeting() {
         $greeting.innerHTML = `<h2>Good Evening, currently the time is</h2>`
     }
     else 
-        $greeting.innerHTML = `<h2>Good Night, currently the time is</h2>`
-    
+        $greeting.innerHTML = `<h2>Good Night, currently the time is</h2>`  
 }
-
 greeting()
 
+// fetching the image form NASA website
 fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawRLgrk4bJovkq')
 
     .then(function(response){
@@ -43,9 +48,12 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
     .then(function(imageData){
         console.log(imageData)
 
+        // condition to display an image when its a video
         if (imageData.media_type === 'video'){
             document.querySelector('img').setAttribute = ('src', '/images/video-photo.jpg')
-        } else {
+        } 
+        else {
+        // adding image to the doument along with its title
         document.querySelector('img').setAttribute('src', imageData.url)
         $dateTime.innerHTML += `
         <h3>${imageData.title}</h3>` 
@@ -53,6 +61,7 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
         }
     })
 
+    // funcion checking if the seconds display option is stored in the local storage
     const checkItem = localStorage.getItem('displaySecondsType')
     function checkLocalStorage() {
         if(checkItem){
@@ -66,6 +75,7 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
     }
     checkLocalStorage()
 
+     // funcion checking if the date display option is stored in the local storage
     const checkDateItem = localStorage.getItem('displayDateType')
     function checkLocalStorageDate() {
         if(checkDateItem){
@@ -74,27 +84,34 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
     }
     checkLocalStorageDate()
 
+    // function to add zero infront of the nunbers when its a single digit 
     function addZero(i){
         if (i < 10){
             i = '0' + i
         }
         return i
     }
-    setInterval(function (){  
 
+    // function to update the time every second
+    setInterval(function (){  
         const newDate = new Date()
 
+        // variables storing hours, minutes, and seconds
         const h = newDate.getHours();
         const m = newDate.getMinutes();
         const s = newDate.getSeconds();
 
-        $hourAndMinutes.innerHTML = h + ':' + addZero(m) 
+        $hourAndMinutes.innerHTML = addZero(h) + ':' + addZero(m) 
     },1000)
 
-
+// global variables for more button
     let moreDataContainer
     let moreDisplay = false
+
+    // adding event listener to the kore button
     $more.addEventListener('click', function() {
+
+        // if clicked for thr first time
         if(moreDisplay === false){
             moreDisplay = true
         
@@ -110,6 +127,8 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
         $more.textContent = 'Less'
         $moreData.style.display = 'block';
         }
+
+        // if clicked for the second time
         else{
             moreDisplay = false
             $moreData.style.display = 'none';
@@ -117,6 +136,7 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
         }
     })
     
+    // function to get name of day of the week 
     function getWeekday() {
         if (date.getDay()===1) {
             weekday = 'Monday'
@@ -143,6 +163,7 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
         return weekday
     }
 
+    // function to get week of the year
     function getweekOfTheYear() {
         const weekOfTheYear =  new Date(date.getFullYear(), 0, 1); 
         const numberOfDays =  Math.floor((date - weekOfTheYear) / (24 * 60 * 60 * 1000));  
@@ -150,6 +171,7 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
         return weekOfTheYearDisplay
     }
 
+    // function to get name of month of the year
     function getMonthOfTheYear() {
         if (date.getMonth()===0) {
             monthOfTheYear = 'January'
@@ -191,17 +213,23 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
         return monthOfTheYear
     }
 
+    // global variable for settings container
     let settingsDisplay = false
     $settings.addEventListener('click', function(){
+
+        // if button clicked for thr first time
         if(settingsDisplay === false){
             settingsDisplay = true
             $settingsPosition.style.height = "100%";
             $settingsPosition.style.backgroundColor = "black";
-            $settings.textContent = 'BACK'
+            $settings.innerHTML = '<i class="fas fa-long-arrow-alt-left"></i>'
             $settingsContainer.style.display = 'inline'
-            
+           
+            // calling setting function to display buttons to add or remove
             settingOne()
         }
+
+        // if button clicked for the second time
         else{
             settingsDisplay = false
             $settings.innerHTML = `<i class="fas fa-cog"></i>`
@@ -210,9 +238,10 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
         }
     })
     
-   
+//function to display add or remove buttons 
     function settingOne() {
-        // add seconds 
+
+        // adding buttons
         $settingsContainer.innerHTML = `
         <div class="settings-selection">
             <h6>Seconds Countdown</h6>
@@ -225,11 +254,13 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
             <button type = 'submit' id = 'removeDate' class='settings-btn'>Remove</button>
         </div>`
 
+        // targetting button added in the event listener
         const addSeconds = document.getElementById('addSeconds')
         const removeSeconds = document.getElementById('removeSeconds')
         const addDate = document.getElementById('addDate')
         const removeDate = document.getElementById('removeDate')
 
+        //  add seconds
         addSeconds.addEventListener('click', function () {
             $seconds.style.display = 'inline'
             setInterval(function() {
@@ -237,20 +268,32 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=iaGChJHXWHZTEGHXpHVwAHxEntawR
             const s = newDate.getSeconds();
             $seconds.innerHTML = ':' + addZero(s)
             }, 1000)   
+
+            // storing condition in the local storage
             localStorage.setItem('displaySecondsType', false)
         })
 
+        // remove seconds
         removeSeconds.addEventListener('click', function () {
             $seconds.style.display = 'none'
+
+            // removing item from the local storage
             localStorage.removeItem('displaySecondsType')
         })
         
+        // add date
         addDate.addEventListener('click', function() {
             $showDate.innerHTML = `<p>${getMonthOfTheYear()}, ${date.getDate()}  ${date.getFullYear()}</p>`
+
+            // storing condition in the local storage
             localStorage.setItem('displayDateType', false)
         })
+
+        // remove seconds
         removeDate.addEventListener('click', function() {
             $showDate.innerHTML = ''
+
+            // removing item from the local storage
             localStorage.removeItem('displayDateType')
         })
 

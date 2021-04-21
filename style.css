@@ -1,16 +1,26 @@
+/* styling the index page */
 body{
     margin: auto;
     position: absolute;
     width: 100%;
     background-color: black;
 }
+
 .date{
     text-align: center;
-    font-size: 2rem;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: 1rem;
+    font-family: 'Cinzel', serif;
     color: white;
-    padding: 1rem 2rem;
-    margin-top: 2rem;
+    padding: 0.5rem 2rem;
+    margin-top: 3rem;
+}
+
+.info{
+    font-family: 'Fauna One', serif;
+}
+
+h2,h3, p{
+    margin: 0.7rem;
 }
 
 .image{
@@ -22,11 +32,10 @@ body{
 .moredata{
     width: 100%;
     text-align: center;
-    font-size: 2rem;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: 1rem;
     background-color: black;
     color: white;
-    padding: 0.5rem 0;
+    padding: 2rem 0;
     display: grid;
     grid-template-columns: 50% 50%;
     column-gap: 5px;
@@ -35,12 +44,14 @@ body{
 
 .moredata p {
     margin-left: 1rem;
+    padding: 0.75rem;
+    font-family: 'Fauna One', serif;
 }
 
 .more_btn {
     text-align: center;
-    font-size: 2rem;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: 1.5rem;
+    font-family: 'Cinzel', serif;
     padding: 0.5rem 3rem; 
     background-color: rgb(161, 172, 196);
     border: none;
@@ -48,7 +59,8 @@ body{
 
 .more_btn:hover{
     background-color: black;
-    color: rgb(161, 172, 196)
+    color: rgb(161, 172, 196);
+    cursor: pointer;
 }
 
 .more-data-position{
@@ -73,20 +85,65 @@ body{
 }
 .settings-style h6{
     margin: 3%;
+    font-family: 'Fauna One', serif;
 }
 .settings-btn{
     padding: 0.5rem;
 }
+.settings-btn:hover{
+    color: white;
+    background-color: rgb(161, 172, 196);
+    cursor: pointer;
+}
 .inside-btn{
     text-align: left;
     font-size: 2rem;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-family: 'Cinzel', serif;
     padding: 0; 
     background-color: black;
     color:rgb(161, 172, 196);
     border: none;
+    transition: 0.5s ease-in-out;
+}
+.inside-btn:hover{
+    color: white;
+    transform: rotate(360deg);
+    cursor: pointer;
 }
 
 h6 {
     font-size: 1.5rem;
 }
+
+/* ********************************First breakpoint - Tablet view*************************************************** */
+
+@media screen and (min-width: 750px) {
+    .date{
+        font-size: 1.25rem;
+    }
+
+    h2, h3, p{
+        margin: 1rem;
+    }
+
+    .moredata{
+        font-size: 1.25rem;
+    }
+}
+    
+/* ********************************Second breakpoint - Desktop view*************************************************** */
+@media screen and (min-width: 1100px) {
+
+    .date{
+        font-size: 1.5rem;
+    }
+
+    h2, h3, p{
+        margin: 1.25rem;
+    }
+
+    .moredata{
+        font-size: 1.5rem;
+    }
+}
+

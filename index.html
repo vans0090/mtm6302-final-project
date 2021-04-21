@@ -4,20 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- loading extra stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Fauna+One&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c0c702a26c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+
+    <!-- main stylesheet -->
     <title>Document</title>
 </head>
 <body>
-    
+    <!-- divs and container for settings to cusomize the document(at the top-left corner) -->
     <div class="settings-position" id="settingsPosition">
         <button type="submit" id="settings" class="inside-btn"><i class="fas fa-cog"></i></button>
         <div id="settings-container" class="settings-style"></div>
     </div>
     
+    <!-- divs and spans to target/store the greeting, time, and title of the loaded image -->
     <div class="date">
         <span id="greeting"></span>
-        <div id="timeHour" class="date">
+        <div id="timeHour" class="info">
             <span id= "hourAndMinutes"></span>
             <span id= "seconds"></span>
         </div>
@@ -25,12 +31,16 @@
         <span id="showDate"></span>   
     </div>
     
+    <!-- fetching and displaying the image -->
     <img class="image">
     
+    <!-- divs and contaner to display more data about the image -->
     <div class="more-data-position">
         <button type="submit" id="more" class="more_btn">More</button>
         <div id="more_data"></div>
     </div>
+
+    <!-- loading script file -->
     <script src="script.js"></script>
 </body>
 </html>
